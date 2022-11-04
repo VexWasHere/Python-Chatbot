@@ -65,7 +65,9 @@ while True:
     user_input = input("You: ")
     gr = get_response(user_input)
     translator = Translator(from_lang="english",to_lang="spanish")
+    def translation():
+        translator.translate(user_input)
     if '-translate'in user_input:
-        print("Bot: ", gr.translate(user_input))
+        print("Bot:", gr.translation())
     else:
         print("Bot:", gr)
