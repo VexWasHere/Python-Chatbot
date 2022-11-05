@@ -63,5 +63,9 @@ def get_response(input_string):
 while True:
     user_input = input("You: ")
     gr = get_response(user_input)
-    print("Bot:", gr)
+    repeat = ' -r'
+    if repeat in user_input:
+        print ("Bot:", user_input.replace(' -r', ''))
+    else:
+        print("Bot:", gr)
 
