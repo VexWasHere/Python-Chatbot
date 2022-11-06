@@ -2,6 +2,7 @@ import json
 import re
 import random_responses
 import random
+from translate import Translator
 
 
 # Load JSON data
@@ -63,9 +64,12 @@ def get_response(input_string):
 while True:
     user_input = input("You: ")
     gr = get_response(user_input)
-    repeat = ' -r'
-    if repeat in user_input:
-        print ("Bot:", user_input.replace(' -r', ''))
+    translator= Translator(to_lang="Spanish")
+    translation = translator.translate(user_input)
+    if '-repeat' in user_input:
+        print ("Bot:", user_input.replace('-repeat', ''))
+    elif '-translate' in user_input:
+        print("Bot:", translation.replace('-translate', ''))
     else:
         print("Bot:", gr)
 
