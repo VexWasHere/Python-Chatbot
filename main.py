@@ -3,15 +3,9 @@ import re
 import random_responses
 import random
 from translate import Translator
-from functools import wraps
-from time import perf_counter
-import sys
 
-def loadtime():
-    def fibonacci(n) -> int:
-        if n < 2:
-            return n
-        return fibonacci(n - 1) + fibonacci(n - 2)
+def add_var():
+    print("In progress")
 
 def main():
     # Load JSON data
@@ -68,6 +62,8 @@ def main():
 
         return random_responses.random_string()
 
+    commands = "-addvar(in progress): Used for if you want the bot to react a certain way to your message \n -repeat: Used for if you want the bot to complete your sentence \n -translate(in progress): Used for if you want to translate text into spanish \n Type '-help' if you forget"
+
 
 
     while True:
@@ -79,14 +75,12 @@ def main():
             print ("Bot:", user_input.replace('-repeat', ''))
         elif '-translate' in user_input:
             print("Bot:", translation.replace('-translate', ''))
+        elif '-addvar' in user_input:
+            add_var()
+        elif '-help' in user_input:
+            print("Bot:", commands)
         else:
             print("Bot:", gr)
 
 if __name__ == '__main__':
-    start = perf_counter()
-    f = loadtime.fibonacci(30)
-    end = perf_counter()
-
-    print(f)
-    print(f'Time: {end - start} seconds')
     main()
